@@ -50,22 +50,31 @@ function expect(target) {
 //
 // Only add code to *THIS* section!
 
-function Dog() {
+function Dog(obj) {
   this.status = "normal";
-  this.color = "black";
   this.hungry = true;
+  if (obj === undefined) {
+    this.color = null;
+  } else {
+    this.color = obj.color;
+  }
+  if (obj !== undefined && obj.hungry !== undefined) {
+    this.hungry = obj.hungry;
+  }
 }
 
-function Human() {
-  this.pet = function () {
-    return (
-      (sadie.status = "happy"), (sadie.hungry = false), (mason.cool = false)
-    );
+function Human(obj) {
+  this.pet = function (obj) {
+    obj.status = "happy";
   };
-  this.feed = function () {
-    return (moonshine.hungry = false);
+  this.feed = function (obj) {
+    obj.hungry = false;
   };
-  this.cool = true;
+  if (obj === undefined) {
+    this.cool = false;
+  } else {
+    this.cool = obj.cool;
+  }
 }
 
 //        __
