@@ -8,8 +8,8 @@
 
 // a simple "it" function for naming groups of expectations
 function it(description, contents) {
-  console.log('\n\n"It ' + description + '"')
-  contents()
+  console.log('\n\n"It ' + description + '"');
+  contents();
 }
 
 // A simple function for expecting values
@@ -19,27 +19,27 @@ function expect(target) {
     toBe: function (expectation) {
       if (target === expectation) {
         console.log(
-          '\n     %cPASSED',
-          'color:green;',
-          'Expected',
+          "\n     %cPASSED",
+          "color:green;",
+          "Expected",
           target,
-          'to be',
+          "to be",
           expectation
-        )
-        return true
+        );
+        return true;
       } else {
         console.log(
-          '\n     %cFAILED',
-          'color:red;',
-          'Expected',
+          "\n     %cFAILED",
+          "color:red;",
+          "Expected",
           target,
-          'to be',
+          "to be",
           expectation
-        )
-        return false
+        );
+        return false;
       }
     },
-  }
+  };
 }
 
 //                          __                  __
@@ -50,9 +50,23 @@ function expect(target) {
 //
 // Only add code to *THIS* section!
 
-// ????????
-// ????????
-// ????????
+function Dog() {
+  this.status = "normal";
+  this.color = "black";
+  this.hungry = true;
+}
+
+function Human() {
+  this.pet = function () {
+    return (
+      (sadie.status = "happy"), (sadie.hungry = false), (mason.cool = false)
+    );
+  };
+  this.feed = function () {
+    return (moonshine.hungry = false);
+  };
+  this.cool = true;
+}
 
 //        __
 //   ____/ /___  ____ ______
@@ -62,15 +76,15 @@ function expect(target) {
 //            /____/
 
 var sadie = new Dog({
-  color: 'black',
+  color: "black",
   hungry: false,
-})
+});
 
 var moonshine = new Dog({
-  color: 'blue-red',
-})
+  color: "blue-red",
+});
 
-var atticus = new Dog()
+var atticus = new Dog();
 
 //     __
 //    / /_  __  ______ ___  ____ _____  _____
@@ -78,11 +92,11 @@ var atticus = new Dog()
 //  / / / / /_/ / / / / / / /_/ / / / (__  )
 // /_/ /_/\__,_/_/ /_/ /_/\__,_/_/ /_/____/
 
-var mason = new Human()
+var mason = new Human();
 
 var julia = new Human({
   cool: true,
-})
+});
 
 //                     __           __  __    _                             __
 //    ____ ___  ____ _/ /_____     / /_/ /_  (_)____   _      ______  _____/ /__
@@ -93,34 +107,34 @@ var julia = new Human({
 // Don't edit this section. Instead make these tests pass by writing
 // constructors in the constructor section above ;D
 
-it('should make Sadie happy when Mason pets her', function () {
-  expect(sadie.status).toBe('normal')
-  mason.pet(sadie)
-  expect(sadie.status).toBe('happy')
-})
+it("should make Sadie happy when Mason pets her", function () {
+  expect(sadie.status).toBe("normal");
+  mason.pet(sadie);
+  expect(sadie.status).toBe("happy");
+});
 
-it('should make Sadie black', function () {
-  expect(sadie.color).toBe('black')
-})
+it("should make Sadie black", function () {
+  expect(sadie.color).toBe("black");
+});
 
-it('should be make Moonshine hungry and Sadie not hungry', function () {
-  expect(moonshine.hungry).toBe(true)
-  expect(sadie.hungry).toBe(false)
-})
+it("should be make Moonshine hungry and Sadie not hungry", function () {
+  expect(moonshine.hungry).toBe(true);
+  expect(sadie.hungry).toBe(false);
+});
 
-it('should make Moonshine no longer hungry when you feed him', function () {
-  julia.feed(moonshine)
-  expect(moonshine.hungry).toBe(false)
-})
+it("should make Moonshine no longer hungry when you feed him", function () {
+  julia.feed(moonshine);
+  expect(moonshine.hungry).toBe(false);
+});
 
 it("should not affect Atticus and Moonshine's owner properties when setting Mason as Sadie's owner ", function () {
-  sadie.owner = mason
-  expect(moonshine.owner).toBe(undefined)
-  expect(atticus.owner).toBe(undefined)
-})
+  sadie.owner = mason;
+  expect(moonshine.owner).toBe(undefined);
+  expect(atticus.owner).toBe(undefined);
+});
 
-it('should make Julia cool and Mason not cool', function () {
-  sadie.owner = mason
-  expect(julia.cool).toBe(true)
-  expect(mason.cool).toBe(false)
-})
+it("should make Julia cool and Mason not cool", function () {
+  sadie.owner = mason;
+  expect(julia.cool).toBe(true);
+  expect(mason.cool).toBe(false);
+});
