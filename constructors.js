@@ -62,11 +62,10 @@ function Dog(obj) {
     this.hungry = obj.hungry;
   }
 }
-
 function Human(obj) {
-  this.pet = function (obj) {
-    obj.status = "happy";
-  };
+  // this.pet = function (obj) {
+  //   obj.status = "happy";
+  // };
   this.feed = function (obj) {
     obj.hungry = false;
   };
@@ -75,7 +74,11 @@ function Human(obj) {
   } else {
     this.cool = obj.cool;
   }
+  console.log(obj);
 }
+Human.prototype.pet = function (obj) {
+  obj.status = "happy";
+};
 
 //        __
 //   ____/ /___  ____ ______
